@@ -1,0 +1,33 @@
+<!-- pie_chart.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pie Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="pie-chart" width="400" height="400"></canvas>
+    <script>
+        var ctx = document.getElementById('pie-chart').getContext('2d');
+        var data = {
+            labels: {{ labels|safe }},
+            datasets: [{
+                data: {{ values|safe }},
+                backgroundColor: [
+                    'red',
+                    'blue',
+                    'green',
+                    // Add more colors as needed
+                ]
+            }]
+        };
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: data,
+            options: {}
+        });
+    </script>
+</body>
+</html>
